@@ -1,3 +1,5 @@
+//i dont know how to refactor this ive looked up several pages of info about how to refactor es5 > es6
+//but this uses no functions that can be turned into fat arrows. and the rest is far too complicated for me to even understand.
 function createArray(rows) { //creates a 2 dimensional array of required height
     let arr = [];
     for (let i = 0; i < rows; i++) {
@@ -9,11 +11,11 @@ function createArray(rows) { //creates a 2 dimensional array of required height
 let theGrid = createArray(gridWidth);
 
 function fillRandom() { //fill the grid randomly
-     for (var j = 0; j < gridHeight; j++) { //iterate through rows
-     for (var k = 0; k < gridWidth; k++) { //iterate through columns
-      var rawRandom = Math.random(); //get a raw random number
-      var improvedNum = (rawRandom * 2); //convert it to an int
-     var randomBinary = Math.floor(improvedNum);
+     for (let j = 0; j < gridHeight; j++) { //iterate through rows
+     for (let k = 0; k < gridWidth; k++) { //iterate through columns
+      let rawRandom = Math.random(); //get a raw random number
+      let improvedNum = (rawRandom * 2); //convert it to an int
+     let randomBinary = Math.floor(improvedNum);
      if (randomBinary === 1) {
      theGrid[j][k] = 1;
      } else {
@@ -24,11 +26,11 @@ function fillRandom() { //fill the grid randomly
         }
 
 function drawGrid() { //draw the contents of the grid onto a canvas
-    var c = document.getElementById(“myCanvas”);
-     var ctx = c.getContext(“2d”);
+    let c = document.getElementById(“myCanvas”);
+     let ctx = c.getContext(“2d”);
      ctx.clearRect(0, 0, 400, 400); //this should clear the canvas ahead of each redraw
-      for (var j = 1; j < gridHeight; j++) { //iterate through rows
-      for (var k = 1; k < gridWidth; k++) { //iterate through columns
+      for (let j = 1; j < gridHeight; j++) { //iterate through rows
+      for (let k = 1; k < gridWidth; k++) { //iterate through columns
      if (theGrid[j][k] === 1) {
      ctx.fillStyle = “#FF0000”;
      ctx.fillRect(j, k, 1, 1);
@@ -38,9 +40,9 @@ function drawGrid() { //draw the contents of the grid onto a canvas
             }
 
 function updateGrid() { //perform one iteration of grid update
-    for (var j = 1; j < gridHeight – 1; j++) { //iterate through rows
-    for (var k = 1; k < gridWidth – 1; k++) { //iterate through columns
-    var totalCells = 0;
+    for (let j = 1; j < gridHeight – 1; j++) { //iterate through rows
+    for (let k = 1; k < gridWidth – 1; k++) { //iterate through columns
+    let totalCells = 0;
     //add up the total values for the surrounding cells
     totalCells += theGrid[j – 1][k – 1]; //top left
     totalCells += theGrid[j – 1][k]; //top center
@@ -83,8 +85,8 @@ function updateGrid() { //perform one iteration of grid update
     }
     }
     //copy mirrorGrid to theGrid
-    for (var j = 0; j < gridHeight; j++) { //iterate through rows
-    for (var k = 0; k < gridWidth; k++) { //iterate through columns
+    for (let j = 0; j < gridHeight; j++) { //iterate through rows
+    for (let k = 0; k < gridWidth; k++) { //iterate through columns
     theGrid[j][k] = mirrorGrid[j][k];
     }
     }
